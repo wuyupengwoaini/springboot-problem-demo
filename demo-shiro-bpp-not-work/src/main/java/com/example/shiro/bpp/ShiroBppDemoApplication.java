@@ -25,6 +25,10 @@ public class ShiroBppDemoApplication {
          *
          * 3.你可以试着把ShiroMockBeanPostProcessor中对MyRedisConnectionFactory的依赖删除，这样的话就是预想中的情况
          *
+         * 4.解决方案
+         *    修改BeanPostProcessor的order顺序
+         *    不共享对象。即两个BeanPostProcessor依赖不同的对象。
+         *    懒加载。+@Lazy注解
          */
         System.out.println(bean.getRedisConnection());
     }
