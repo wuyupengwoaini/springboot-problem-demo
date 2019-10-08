@@ -4,6 +4,7 @@ import com.example.shiro.bpp.bean.MyRedisConnectionFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  * @Description
@@ -29,6 +30,7 @@ public class ShiroBppDemoApplication {
          *    修改BeanPostProcessor的order顺序
          *    不共享对象。即两个BeanPostProcessor依赖不同的对象。
          *    懒加载。+@Lazy注解
+         *    用构造方案 + ObjectProvider
          */
         System.out.println(bean.getRedisConnection());
     }
