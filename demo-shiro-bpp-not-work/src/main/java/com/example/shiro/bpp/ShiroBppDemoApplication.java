@@ -1,20 +1,20 @@
 package com.example.shiro.bpp;
 
 import com.example.shiro.bpp.bean.MyRedisConnectionFactory;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 /**
  * @Description
  * @Author wuyupeng
  * @Date 2019/9/26 15:22fox
  **/
-@ComponentScan("com.example.shiro.bpp")
-@EnableAsync
+@SpringBootApplication
 public class ShiroBppDemoApplication {
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext configApplicationContext = new AnnotationConfigApplicationContext(ShiroBppDemoApplication.class);
+        ConfigurableApplicationContext configApplicationContext = SpringApplication.run(ShiroBppDemoApplication.class,args);
+
         MyRedisConnectionFactory bean = configApplicationContext.getBean(MyRedisConnectionFactory.class);
         /**
          * 1.正常情况下，应该打印tracing----------MyRedisConnection

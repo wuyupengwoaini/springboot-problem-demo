@@ -4,8 +4,6 @@ import com.example.cyclic.dependency.service.HelloService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
@@ -14,7 +12,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
  * @Date 2019/9/26 18:27
  **/
 @EnableAsync
-@ComponentScan("com.example.cyclic.dependency")
+@SpringBootApplication
 public class CyclicDependencyApplication {
     public static void main(String[] args) {
         /**
@@ -32,7 +30,7 @@ public class CyclicDependencyApplication {
          *  也就是最终版本的Bean，否则可能就乱套了，Spring也提供了这样的自检机制
          *
          */
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(CyclicDependencyApplication.class);
+        ConfigurableApplicationContext context = SpringApplication.run(CyclicDependencyApplication.class,args);
         HelloService helloService = context.getBean(HelloService.class);
         helloService.hello(1);
     }
